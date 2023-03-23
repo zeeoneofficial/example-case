@@ -584,6 +584,31 @@ async function Botstarted() {
             quoted
         })
     }
+    alpha.sendMediaAsSticker = async (jid, path, quoted, options = {}) => {
+      let {
+         ext,
+         mime,
+         data
+      } = await alpha.getFile(path)
+      let media = {}
+      let buffer
+      media.data = data
+      media.mimetype = mime
+      if (options && (options.packname || options.author)) {
+         buffer = await writeExif(media, options)
+      } else {
+         buffer = /image/.test(mime) ? await imageToWebp(data) : /video/.test(mime) ? await videoToWebp(data) : ""
+      }
+      await alpha.sendMessage(jid, {
+         sticker: {
+            url: buffer
+         },
+         ...options
+      }, {
+         quoted
+      })
+      return buffer
+   }
     alpha.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await fetch(path)).buffer() : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
