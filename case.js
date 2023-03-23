@@ -3498,7 +3498,7 @@ case "tyni": {
 case 'ttp':
          case 'attp':{
             if (!text) return reply(`Kirim perintah:\n${prefix+command} teks\n\nContoh penggunaan\n${prefix+command} saya robok anda goblok`)
-            let res = await fetch(global.api('alfa', '/api/canvas/' + command, {}, 'apikey'))
+            let res = await fetch(global.api('alfa', '/api/canvas/' + command, {text: text}, 'apikey'))
             if (!res.ok) throw await res.text()
             let img = await res.buffer()
             let encmedia = await alpha.sendMediaAsSticker(m.chat, img, m, {
