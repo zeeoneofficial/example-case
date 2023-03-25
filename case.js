@@ -239,7 +239,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakgambar[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebakgambar[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebakgambar',
                         buttonText: {
@@ -260,7 +259,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkata[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebakkata[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebakkata',
                         buttonText: {
@@ -281,7 +279,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakbendera[m.chat][1]))
                 jawaban = json.name.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebakbendera[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebakbendera',
                         buttonText: {
@@ -302,7 +299,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(caklontong[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += caklontong[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.caklontong',
                         buttonText: {
@@ -323,7 +319,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(susunkata[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += susunkata[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.susunkata',
                         buttonText: {
@@ -344,7 +339,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkalimat[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebakkalimat[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebakkalimat',
                         buttonText: {
@@ -365,7 +359,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(siapaaku[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += siapaaku[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebaksiapa',
                         buttonText: {
@@ -386,7 +379,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tekateki[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tekateki[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tekateki',
                         buttonText: {
@@ -407,7 +399,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkabupaten[m.chat][1]))
                 jawaban = json.title.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebakkabupaten[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebakkabupaten',
                         buttonText: {
@@ -428,7 +419,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkota[m.chat][1]))
                 jawaban = json.title.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebakkota[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebakkota',
                         buttonText: {
@@ -449,7 +439,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkimia[m.chat][1]))
                 jawaban = json.unsur.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebakkimia[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebakkimia',
                         buttonText: {
@@ -470,7 +459,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebaklirik[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebaklirik[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebaklirik',
                         buttonText: {
@@ -491,7 +479,6 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebaktebakan[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                    global.db.data.users[m.sender].exp += tebaktebakan[m.chat][2]
                     await alpha.sendButtonText(m.chat, [{
                         buttonId: '.tebaktebakan',
                         buttonText: {
@@ -3733,7 +3720,7 @@ ${isSurender ? '' : ``}`.trim()
             case 'ttp':
             case 'attp': {
                 if (!text) return reply(`Kirim perintah:\n${prefix+command} teks\n\nContoh penggunaan\n${prefix+command} saya robok anda goblok`)
-                let res = await fetch(global.api('alfa', '/api/canvas/' + command, {}, 'apikey'))
+                let res = await fetch(global.api('alfa', '/api/canvas/' + command, {text:text}, 'apikey'))
                 if (!res.ok) throw await res.text()
                 let img = await res.buffer()
                 let encmedia = await alpha.sendMediaAsSticker(m.chat, img, m, {
