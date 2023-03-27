@@ -233,7 +233,7 @@ async function Botstarted() {
                             mentions: [num]
                         }
 
-                        alpha.sendMessage(anu.id, buttonMessage, {})
+                        alpha.sendMessage(anu.id, {image: welcome, caption: full_pesan, mentions: [num]}, {})
                     }
                     else {
                         const buttonMessage = {
@@ -245,7 +245,7 @@ async function Botstarted() {
                             mentions: [num]
                         }
 
-                        alpha.sendMessage(anu.id, buttonMessage, {})
+                        alpha.sendMessage(anu.id, {image: welcome, caption: `Halo @${num.split("@")[0]}, Welcome To ${metadata.subject}`, mentions: [num]}, {})
                     }
                 }
                 else if (anu.action == 'remove' && isLeft) {
@@ -296,7 +296,7 @@ async function Botstarted() {
                             mentions: [num]
                         }
 
-                        alpha.sendMessage(anu.id, buttonMessage, {})
+                        alpha.sendMessage(anu.id, {image: goobye, caption: full_pesan, mentions: [num]}, {})
                     }
                     else {
                         const buttonMessage = {
@@ -308,7 +308,7 @@ async function Botstarted() {
                             mentions: [num]
                         }
 
-                        alpha.sendMessage(anu.id, buttonMessage, {})
+                        alpha.sendMessage(anu.id, {image: goobye, caption: `Sayonara @${num.split("@")[0]}, doa terbaik untukmu kawan`, mentions: [num]}, {})
                     }
                 }
             }
