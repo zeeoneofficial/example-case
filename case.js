@@ -764,41 +764,18 @@ await alpha.sendMessage(m.chat, {image:{url: image}, caption: thumbInfo},{quoted
                 var result = await res.json()
                 let dapet = result.result.all
                 var tbuff = await getBuffer(dapet[0].image)
-                let listSections = []
-                Object.values(dapet).map(async (v, index) => {
-                    let cap = `🆔 ID : ${v.videoId}
+                cap = "「 *YOUTUBE PLAY* 」\n\n"  
+    Object.values(dapet).map(async (v) => {
+                    cap += `🆔 ID : ${v.videoId}
 💬 Title : ${v.title}
 📺 Views : ${v.views}
 ⏰ Duration : ${v.duration.timestamp}
 ▶️ Channel : ${v.type == 'video' ? v.author.name : v.name}
 📆 Upload : ${v.ago}
 🔗 URL Video : ${v.url}
-📝 Description : ${v.description}`
-                    await listSections.push([index + ' ' + v.title, [
-                        ['*Video 🎦*', '.ytmp4 ' + v.url, cap],
-                        ['*Audio 🎧*', '.ytmp3 ' + v.url, cap]
-                    ]])
-                })
-                const sections = listSections.map(([title, rows]) => ({
-                    title: title,
-                    rows: rows.map(([rowTitle, rowId, description]) => ({
-                        title: rowTitle || rowId || '',
-                        rowId: rowId || rowTitle || '',
-                        description: description || ''
-                    }))
-                }))
-
-                const listMessage = {
-                    text: `Silahkan pilih video atau audio yang ingin kamu download!`,
-                    footer: footer_text,
-                    title: "「 *YOUTUBE SEARCH* 」",
-                    buttonText: "SELECT HERE",
-                    sections
-                }
-                return await alpha.sendMessage(m.chat, listMessage, {
-                    quoted: m,
-                    upload: alpha.waUploadToServer
-                }).catch(async _ => await reply("Server sedang eror"))
+📝 Description : ${v.description}\n\n---------------------------\n\n`
+})
+alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             }
             break
             case 'igphoto':
