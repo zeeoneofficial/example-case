@@ -239,7 +239,13 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakgambar[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebakgambar", tebakgambar[m.chat][2]) + "\n\nKirim perintah .tebakgambar untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebakgambar',
+                        buttonText: {
+                            displayText: "Tebakgambar"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebakgambar", tebakgambar[m.chat][2]), footer_text, m)
                     clearTimeout(tebakgambar[m.chat][3])
                     delete tebakgambar[m.chat]
                 }
@@ -253,13 +259,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkata[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Kata", tebakkata[m.chat][2]) + "\n\nKirim perintah .tebakkata untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebakkata',
+                        buttonText: {
+                            displayText: "Tebak Kata"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Kata", tebakkata[m.chat][2]), footer_text, m)
                     clearTimeout(tebakkata[m.chat][3])
                     delete tebakkata[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.teka -- _Bantuan_\n.yteka -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.teka', 'Hint', '.yteka', 'Nyerah', m)
             }
         }
         if (tebakbendera[m.chat] && !isCmd && m.quoted) {
@@ -267,13 +279,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakbendera[m.chat][1]))
                 jawaban = json.name.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Bendera", tebakbendera[m.chat][2]) + "\n\nKirim perintah .tebakbendera untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebakbendera',
+                        buttonText: {
+                            displayText: "tebak bendera"
+                        },
+                        type: 1
+                    }], jawabanBenar("tebak bendera", tebakbendera[m.chat][2]), footer_text, m)
                     clearTimeout(tebakbendera[m.chat][3])
                     delete tebakbendera[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.tebe -- _Bantuan_\n.ytebe -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.tebe', 'Hint', '.ytebe', 'Nyerah', m)
             }
         }
         if (caklontong[m.chat] && !isCmd && m.quoted) {
@@ -281,13 +299,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(caklontong[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Cak Lontong", caklontong[m.chat][2]) + "\n\nKirim perintah .caklontong untuk bermain lagi")
-                   clearTimeout(caklontong[m.chat][3])
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.caklontong',
+                        buttonText: {
+                            displayText: "Cak Lontong"
+                        },
+                        type: 1
+                    }], jawabanBenar("Cak Lontong", caklontong[m.chat][2]), footer_text, m)
+                    clearTimeout(caklontong[m.chat][3])
                     delete caklontong[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.telo -- _Bantuan_\n.ytelo -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.telo', 'Hint', '.ytelo', 'Nyerah', m)
             }
         }
         if (susunkata[m.chat] && !isCmd && m.quoted) {
@@ -295,13 +319,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(susunkata[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Susun Kata", susunkata[m.chat][2]) + "\n\nKirim perintah .susunkata untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.susunkata',
+                        buttonText: {
+                            displayText: "Susun Kata"
+                        },
+                        type: 1
+                    }], jawabanBenar("Susun Kata", susunkata[m.chat][2]), footer_text, m)
                     clearTimeout(susunkata[m.chat][3])
                     delete susunkata[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.tesuka -- _Bantuan_\n.ytesuka -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.tesuka', 'Hint', '.ytesuka', 'Nyerah', m)
             }
         }
         if (tebakkalimat[m.chat] && !isCmd && m.quoted) {
@@ -309,13 +339,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkalimat[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Kalimat", tebakkalimat[m.chat][2]) + "\n\nKirim perintah .tebakkalimat untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebakkalimat',
+                        buttonText: {
+                            displayText: "Tebak Kalimat"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Kalimat", tebakkalimat[m.chat][2]), footer_text, m)
                     clearTimeout(tebakkalimat[m.chat][3])
                     delete tebakkalimat[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.tekatu -- _Bantuan_\n.ytekatu -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.tekatu', 'Hint', '.ytekatu', 'Nyerah', m)
             }
         }
         if (siapaaku[m.chat] && !isCmd && m.quoted) {
@@ -323,13 +359,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(siapaaku[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Siapa", siapaaku[m.chat][2]) + "\n\nKirim perintah .tebaksiapa untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebaksiapa',
+                        buttonText: {
+                            displayText: "Tebak Siapa"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Siapa", siapaaku[m.chat][2]), footer_text, m)
                     clearTimeout(siapaaku[m.chat][3])
                     delete siapaaku[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.tesi -- _Bantuan_\n.ytesi -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.tesi', 'Hint', '.ytesi', 'Nyerah', m)
             }
         }
         if (tekateki[m.chat] && !isCmd && m.quoted) {
@@ -337,13 +379,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tekateki[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Teka Teki", tekateki[m.chat][2]) + "\n\nKirim perintah .tekateki untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tekateki',
+                        buttonText: {
+                            displayText: "Teka Teki"
+                        },
+                        type: 1
+                    }], jawabanBenar("Teka Teki", tekateki[m.chat][2]), footer_text, m)
                     clearTimeout(tekateki[m.chat][3])
                     delete tekateki[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.tete -- _Bantuan_\n.ytete -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.tete', 'Hint', '.ytete', 'Nyerah', m)
             }
         }
         if (tebakkabupaten[m.chat] && !isCmd && m.quoted) {
@@ -351,13 +399,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkabupaten[m.chat][1]))
                 jawaban = json.title.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Kabupaten", tebakkabupaten[m.chat][2]) + "\n\nKirim perintah .tebakkabupaten untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebakkabupaten',
+                        buttonText: {
+                            displayText: "Tebak Kabupaten"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Kabupaten", tebakkabupaten[m.chat][2]), footer_text, m)
                     clearTimeout(tebakkabupaten[m.chat][3])
                     delete tebakkabupaten[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.tekabu -- _Bantuan_\n.ytekabu -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.tekabu', 'Hint', '.ytekabu', 'Nyerah', m)
             }
         }
         if (tebakkota[m.chat] && !isCmd && m.quoted) {
@@ -365,13 +419,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkota[m.chat][1]))
                 jawaban = json.title.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Kota", tebakkota[m.chat][2]) + "\n\nKirim perintah .tebakkota untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebakkota',
+                        buttonText: {
+                            displayText: "Tebak Kota"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Kota", tebakkota[m.chat][2]), footer_text, m)
                     clearTimeout(tebakkota[m.chat][3])
                     delete tebakkota[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.tekako -- _Bantuan_\n.ytekako -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.tekako', 'Hint', '.ytekako', 'Nyerah', m)
             }
         }
         if (tebakkimia[m.chat] && !isCmd && m.quoted) {
@@ -379,13 +439,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebakkimia[m.chat][1]))
                 jawaban = json.unsur.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Kimia", tebakkimia[m.chat][2]) + "\n\nKirim perintah .tebakkimia untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebakkimia',
+                        buttonText: {
+                            displayText: "Tebak Kimia"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Kimia", tebakkimia[m.chat][2]), footer_text, m)
                     clearTimeout(tebakkimia[m.chat][3])
                     delete tebakkimia[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.teki -- _Bantuan_\n.yteki -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.teki', 'Hint', '.yteki', 'Nyerah', m)
             }
         }
         if (tebaklirik[m.chat] && !isCmd && m.quoted) {
@@ -393,13 +459,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebaklirik[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Lirik", tebaklirik[m.chat][2]) + "\n\nKirim perintah .tebaklirik untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebaklirik',
+                        buttonText: {
+                            displayText: "Tebak Lirik"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Lirik", tebaklirik[m.chat][2]), footer_text, m)
                     clearTimeout(tebaklirik[m.chat][3])
                     delete tebaklirik[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.teli -- _Bantuan_\n.yteli -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.teli', 'Hint', '.yteli', 'Nyerah', m)
             }
         }
         if (tebaktebakan[m.chat] && !isCmd && m.quoted) {
@@ -407,13 +479,19 @@ ${isSurender ? '' : ``}`.trim()
                 let json = JSON.parse(JSON.stringify(tebaktebakan[m.chat][1]))
                 jawaban = json.jawaban.toLowerCase().trim()
                 if (m.text.toLowerCase() == jawaban) {
-                  reply(jawabanBenar("Tebak Tebakan", tebaktebakan[m.chat][2]) + "\n\nKirim perintah .tebaktebakan untuk bermain lagi")
+                    await alpha.sendButtonText(m.chat, [{
+                        buttonId: '.tebaktebakan',
+                        buttonText: {
+                            displayText: "Tebak Tebakan"
+                        },
+                        type: 1
+                    }], jawabanBenar("Tebak Tebakan", tebaktebakan[m.chat][2]), footer_text, m)
                     clearTimeout(tebaktebakan[m.chat][3])
                     delete tebaktebakan[m.chat]
                 }
                 else if (similarity(m.text.toLowerCase(), jawaban) >= threshold)
                     reply(`_Ya, Dikit Lagi!_`)
-                else reply("❌ Jawaban salah\n\n.teteb -- _Bantuan_\n.yteteb -- _Nyerah_")
+                else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.teteb', 'Hint', '.yteteb', 'Nyerah', m)
             }
         }
 
@@ -616,7 +694,9 @@ ${isSurender ? '' : ``}`.trim()
                     key += `• Size: ${filesize}\n`
                     key += `• Download: ${download}\n\n`
                     key += `Ukuran media melebihi batas, silahkan download sendiri melalui link di atas.`
-                    await alpha.sendMessage(m.chat, {image:{url: thumbnail}, caption: key},{quoted:m})
+                    await alpha.sendButImage(m.chat, thumbnail, but, key, footer_text, [], {
+                        quoted: m
+                    })
                 }
                 else {
                     let key = "「 *YOUTUBE VIDEO* 」\n\n"
@@ -626,7 +706,9 @@ ${isSurender ? '' : ``}`.trim()
                     key += `• Size: ${filesize}\n`
                     key += `• Download: ${download}\n\n`
                     key += `Silahkan tunggu beberapa hari lagi, media akan di kirim sama bot. Jika tidak di kirim lu download sendiri pake link di atas.`
-                    await alpha.sendMessage(m.chat, {image:{url: thumbnail}, caption: key},{quoted:m})
+                    await alpha.sendButImage(m.chat, thumbnail, but, key, footer_text, [], {
+                        quoted: m
+                    })
                     alpha.sendMessage(from, {
                         video: {
                             url: download
@@ -683,7 +765,9 @@ ${isSurender ? '' : ``}`.trim()
                     key += `• Size: ${filesize}\n`
                     key += `• Download: ${download}\n\n`
                     key += `Ukuran media melebihi batas, silahkan download sendiri melalui link di atas.`
-                    await alpha.sendMessage(m.chat, {image:{url: thumbnail}, caption: key},{quoted:m})
+                    await alpha.sendButImage(m.chat, thumbnail, but, key, footer_text, [], {
+                        quoted: m
+                    })
                 }
                 else {
                     let key = "「 *YOUTUBE AUDIO* 」\n\n"
@@ -693,7 +777,9 @@ ${isSurender ? '' : ``}`.trim()
                     key += `• Size: ${filesize}\n`
                     key += `• Download: ${download}\n\n`
                     key += `Silahkan tunggu beberapa hari lagi, media akan di kirim sama bot. Jika tidak di kirim lu download sendiri pake link di atas.`
-                    await alpha.sendMessage(m.chat, {image:{url: thumbnail}, caption: key},{quoted:m})
+                    await alpha.sendButImage(m.chat, thumbnail, but, key, footer_text, [], {
+                        quoted: m
+                    })
                     alpha.sendMessage(from, {
                         audio: {
                             url: download
@@ -749,7 +835,9 @@ ${isSurender ? '' : ``}`.trim()
 📆 Upload : ${ago}
 🔗 URL Video : ${url}
 📝 Description : ${description}`
-await alpha.sendMessage(m.chat, {image:{url: image}, caption: thumbInfo},{quoted:m})
+                await alpha.sendButImage(m.chat, image, but, thumbInfo, footer_text, [], {
+                    quoted: m
+                })
             }
             break
             case 'yts':
@@ -764,18 +852,41 @@ await alpha.sendMessage(m.chat, {image:{url: image}, caption: thumbInfo},{quoted
                 var result = await res.json()
                 let dapet = result.result.all
                 var tbuff = await getBuffer(dapet[0].image)
-                cap = "「 *YOUTUBE PLAY* 」\n\n"  
-    Object.values(dapet).map(async (v) => {
-                    cap += `🆔 ID : ${v.videoId}
+                let listSections = []
+                Object.values(dapet).map(async (v, index) => {
+                    let cap = `🆔 ID : ${v.videoId}
 💬 Title : ${v.title}
 📺 Views : ${v.views}
 ⏰ Duration : ${v.duration.timestamp}
 ▶️ Channel : ${v.type == 'video' ? v.author.name : v.name}
 📆 Upload : ${v.ago}
 🔗 URL Video : ${v.url}
-📝 Description : ${v.description}\n\n---------------------------\n\n`
-})
-alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
+📝 Description : ${v.description}`
+                    await listSections.push([index + ' ' + v.title, [
+                        ['*Video 🎦*', '.ytmp4 ' + v.url, cap],
+                        ['*Audio 🎧*', '.ytmp3 ' + v.url, cap]
+                    ]])
+                })
+                const sections = listSections.map(([title, rows]) => ({
+                    title: title,
+                    rows: rows.map(([rowTitle, rowId, description]) => ({
+                        title: rowTitle || rowId || '',
+                        rowId: rowId || rowTitle || '',
+                        description: description || ''
+                    }))
+                }))
+
+                const listMessage = {
+                    text: `Silahkan pilih video atau audio yang ingin kamu download!`,
+                    footer: footer_text,
+                    title: "「 *YOUTUBE SEARCH* 」",
+                    buttonText: "SELECT HERE",
+                    sections
+                }
+                return await alpha.sendMessage(m.chat, listMessage, {
+                    quoted: m,
+                    upload: alpha.waUploadToServer
+                }).catch(async _ => await reply("Server sedang eror"))
             }
             break
             case 'igphoto':
@@ -2648,7 +2759,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     }), result, 4999,
                     setTimeout(() => {
                         if (tebakgambar[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tebakgambar untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebakgambar',
+                                buttonText: {
+                                    displayText: "Tebak Gambar"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete tebakgambar[m.chat]
                         }
                     }, 120000)
@@ -2658,14 +2775,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tega': {
                 if (!(m.chat in tebakgambar)) return
                 let json = tebakgambar[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', '© ' + reply, '.ytega', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytega': {
                 if (!(m.chat in tebakgambar)) return
                 clearTimeout(tebakgambar[m.chat][3])
                 delete tebakgambar[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebakgambar', 'Soal baru', m)
             }
             break
             case "tebakkata": {
@@ -2683,7 +2800,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (tebakkata[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tebakkata untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebakkata',
+                                buttonText: {
+                                    displayText: "Tebak Kata"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete tebakkata[m.chat]
                         }
                     }, 120000)
@@ -2693,14 +2816,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'teka': {
                 if (!(m.chat in tebakkata)) return
                 let json = tebakkata[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.yteka', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'yteka': {
                 if (!(m.chat in tebakkata)) return
                 clearTimeout(tebakkata[m.chat][3])
                 delete tebakkata[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebakkata', 'Soal baru', m)
             }
             break
             case "tebakbendera": {
@@ -2726,7 +2849,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     result, 4999,
                     setTimeout(() => {
                         if (tebakbendera[m.chat]) {
-                          reply(waktuHabis(result.name) + "\n\nkirim perintah .tebakbendera untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebakbendera',
+                                buttonText: {
+                                    displayText: "Tebak Bendera"
+                                },
+                                type: 1
+                            }], waktuHabis(result.name), footer_text, m)
                             delete tebakbendera[m.chat]
                         }
                     }, 120000)
@@ -2736,14 +2865,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tebe': {
                 if (!(m.chat in tebakbendera)) return
                 let json = tebakbendera[m.chat][1]
-                reply('```' + json.name.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.name.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ytebe', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytebe': {
                 if (!(m.chat in tebakbendera)) return
                 clearTimeout(tebakbendera[m.chat][3])
                 delete tebakbendera[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebakbendera', 'Soal baru', m)
             }
             break
             case 'tebakkalimat': {
@@ -2761,7 +2890,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (tebakkalimat[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tebakkalimat untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebakkalimat',
+                                buttonText: {
+                                    displayText: "Tebak Kalimat"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete tebakkalimat[m.chat]
                         }
                     }, 120000)
@@ -2771,14 +2906,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tekatu': {
                 if (!(m.chat in tebakkalimat)) return
                 let json = tebakkalimat[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ytekatu', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytekatu': {
                 if (!(m.chat in tebakkalimat)) return
                 clearTimeout(tebakkalimat[m.chat][3])
                 delete tebakkalimat[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebakkalimat', 'Soal baru', m)
             }
             break
             case 'tebaksiapa': {
@@ -2796,7 +2931,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (siapaaku[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tebaksiapa untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebaksiapa',
+                                buttonText: {
+                                    displayText: "Tebak Siapa"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete siapaaku[m.chat]
                         }
                     }, 120000)
@@ -2806,14 +2947,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tesi': {
                 if (!(m.chat in siapaaku)) return
                 let json = siapaaku[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ytesi', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytesi': {
                 if (!(m.chat in siapaaku)) return
                 clearTimeout(siapaaku[m.chat][3])
                 delete siapaaku[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebaksiapa', 'Soal baru', m)
             }
             break
             case 'tebakkabupaten': {
@@ -2833,7 +2974,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     }), result, 4999,
                     setTimeout(() => {
                         if (tebakkabupaten[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tebakkabupaten untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebakkabupaten',
+                                buttonText: {
+                                    displayText: "Tebak Kabupaten"
+                                },
+                                type: 1
+                            }], waktuHabis(result.title), footer_text, m)
                             delete tebakkabupaten[m.chat]
                         }
                     }, 120000)
@@ -2843,14 +2990,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tekabu': {
                 if (!(m.chat in tebakkabupaten)) return
                 let json = tebakkabupaten[m.chat][1]
-                reply('```' + json.title.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.title.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ytekabu', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytekabu': {
                 if (!(m.chat in tebakkabupaten)) return
                 clearTimeout(tebakkabupaten[m.chat][3])
                 delete tebakkabupaten[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebakkabupaten', 'Soal baru', m)
             }
             case 'tebakkota': {
                 if (tebakkota[m.chat]) return alpha.sendMessage(m.chat, {
@@ -2869,7 +3016,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     }), result, 4999,
                     setTimeout(() => {
                         if (tebakkota[m.chat]) {
-                          reply(waktuHabis(result.title) + "\n\nkirim perintah .tebakkota untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebakkota',
+                                buttonText: {
+                                    displayText: "Tebak Kota"
+                                },
+                                type: 1
+                            }], waktuHabis(result.title), footer_text, m)
                             delete tebakkota[m.chat]
                         }
                     }, 120000)
@@ -2879,14 +3032,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tekako': {
                 if (!(m.chat in tebakkota)) return
                 let json = tebakkota[m.chat][1]
-                reply('```' + json.title.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.title.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ytekabu', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytekako': {
                 if (!(m.chat in tebakkota)) return
                 clearTimeout(tebakkota[m.chat][3])
                 delete tebakkota[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebakkabupaten', 'Soal baru', m)
             }
             break
             case 'tebakkimia': {
@@ -2904,7 +3057,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Apa Arti Dari Simbol : *${result.lambang}*?\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (tebakkimia[m.chat]) {
-                          reply(waktuHabis(result.unsur) + "\n\nkirim perintah .tebakkota untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebakkimia',
+                                buttonText: {
+                                    displayText: "Tebak Kimia"
+                                },
+                                type: 1
+                            }], waktuHabis(result.unsur), footer_text, m)
                             delete tebakkimia[m.chat]
                         }
                     }, 120000)
@@ -2914,14 +3073,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'teki': {
                 if (!(m.chat in tebakkimia)) return
                 let json = tebakkimia[m.chat][1]
-                reply('```' + json.unsur.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.unsur.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.yteki', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'yteki': {
                 if (!(m.chat in tebakkimia)) return
                 clearTimeout(tebakkimia[m.chat][3])
                 delete tebakkimia[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebakkimia', 'Soal baru', m)
             }
             break
             case 'tebaklirik': {
@@ -2939,7 +3098,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Ini Adalah Lirik Dari Lagu? : *${result.soal}*?\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (tebaklirik[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tebaklirik untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebaklirik',
+                                buttonText: {
+                                    displayText: "Tebak Lirik"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete tebaklirik[m.chat]
                         }
                     }, 120000)
@@ -2949,14 +3114,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'teli': {
                 if (!(m.chat in tebaklirik)) return
                 let json = tebaklirik[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.yteli', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'yteli': {
                 if (!(m.chat in tebaklirik)) return
                 clearTimeout(tebaklirik[m.chat][3])
                 delete tebaklirik[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebaklirik', 'Soal baru', m)
             }
             break
             case 'tebaktebakan': {
@@ -2974,7 +3139,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (tebaktebakan[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tebaktebakan untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tebaktebakan',
+                                buttonText: {
+                                    displayText: "Tebak Tebakan"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete tebaktebakan[m.chat]
                         }
                     }, 120000)
@@ -2984,14 +3155,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'teteb': {
                 if (!(m.chat in tebaktebakan)) return
                 let json = tebaktebakan[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.yteteb', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'yteteb': {
                 if (!(m.chat in tebaktebakan)) return
                 clearTimeout(tebaktebakan[m.chat][3])
                 delete tebaktebakan[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tebaktebakan', 'Soal baru', m)
             }
             break
             case 'caklontong': {
@@ -3009,7 +3180,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (caklontong[m.chat]) {
-                          reply(waktuHabis(result.jawaban + '\n' + result.deskripsi) + "\n\nkirim perintah .caklontong untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.caklontong',
+                                buttonText: {
+                                    displayText: "Cak Lontong"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban + '\n' + result.deskripsi), footer_text, m)
                             delete caklontong[m.chat]
                         }
                     }, 120000)
@@ -3019,14 +3196,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'telo': {
                 if (!(m.chat in caklontong)) return
                 let json = caklontong[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ytelo', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytelo': {
                 if (!(m.chat in caklontong)) return
                 clearTimeout(caklontong[m.chat][3])
                 delete caklontong[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.caklontong', 'Soal baru', m)
             }
             break
             case 'susunkata': {
@@ -3044,7 +3221,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `*Jawablah Pertanyaan Berikut :*\nSoal : ${result.soal}\nTipe : ${result.tipe}\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (susunkata[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .susunkata untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.susunkata',
+                                buttonText: {
+                                    displayText: "Susun Kata"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete susunkata[m.chat]
                         }
                     }, 120000)
@@ -3054,14 +3237,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tesuka': {
                 if (!(m.chat in susunkata)) return
                 let json = susunkata[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ytesuka', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ytesuka': {
                 if (!(m.chat in susunkata)) return
                 clearTimeout(susunkata[m.chat][3])
                 delete susunkata[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.susunkata', 'Soal baru', m)
             }
             break
             case 'tekateki': {
@@ -3079,7 +3262,13 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
                     await alpha.sendText(m.chat, `Silahkan Jawab Pertanyaan Berikut\n\n${result.soal}\nWaktu : ${(120000 / 1000).toFixed(2)} detik`, m), result, 4999,
                     setTimeout(() => {
                         if (tekateki[m.chat]) {
-                          reply(waktuHabis(result.jawaban) + "\n\nkirim perintah .tekateki untuk bermain lagi!")
+                            alpha.sendButtonText(m.chat, [{
+                                buttonId: '.tekateki',
+                                buttonText: {
+                                    displayText: "Teka Teki"
+                                },
+                                type: 1
+                            }], waktuHabis(result.jawaban), footer_text, m)
                             delete tekateki[m.chat]
                         }
                     }, 120000)
@@ -3089,14 +3278,14 @@ alpha.sendMessage(m.chat, {image: tbuff, caption:cap}, {quoted:m})
             case 'tete': {
                 if (!(m.chat in tekateki)) return
                 let json = tekateki[m.chat][1]
-                reply('```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```')
+                alpha.send1ButMes(m.chat, '```' + json.jawaban.replace(/[bcdfghjklmnpqrstvwxyz]/ig, '_') + '```', footer_text, '.ttete', 'Dahlah Nyerah Aja✌️', m)
             }
             break
             case 'ttete': {
                 if (!(m.chat in tekateki)) return
                 clearTimeout(tekateki[m.chat][3])
                 delete tekateki[m.chat]
-                return reply("Payah lu, gitu aja nyerah")
+                return alpha.send1ButMes(m.chat, 'Payah lu, gitu aja nyerah', footer_text, '.tekateki', 'Soal baru', m)
             }
             break
             //image Effect
