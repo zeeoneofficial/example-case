@@ -4208,6 +4208,32 @@ ${prefix}nuliskiri Subscribe Ya YT zeeoneofc`)
                 }, {})
             }
             break
+         case 'sgif':
+         case 'stikerin':
+         case 's':
+         case 'sticker':
+         case 'stiker': {
+            if (!quoted) return reply(`Kirim/Reply Gambar/Video Dengan Caption ${prefix + command}\n\nDurasi Sticker Video 1-9 Detik`)
+            if (/image/.test(mime)) {
+               let media = await quoted.download()
+               let encmedia = await alpha.sendImageAsSticker(m.chat, media, m, {
+                  packname: global.packname,
+                  author: global.author
+               })
+               await fs.unlinkSync(encmedia)
+            } else if (/video/.test(mime)) {
+               if ((quoted.msg || quoted).seconds > 11) return reply(`Kirim/Reply Gambar/Video Dengan Caption ${prefix + command}\n\nDurasi Sticker Video 1-9 Detik`)
+               let media = await quoted.download()
+               let encmedia = await alpha.sendVideoAsSticker(m.chat, media, m, {
+                  packname: global.packname,
+                  author: global.author
+               })
+               await fs.unlinkSync(encmedia)
+            } else {
+               reply(`Kirim/Reply Gambar/Video Dengan Caption ${prefix + command}\n\nDurasi Sticker Video 1-9 Detik`)
+            }
+         }
+         break
 
             default:
                 if (budy.startsWith('>')) {
