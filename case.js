@@ -1020,7 +1020,7 @@ ${isSurender ? '' : ``}`.trim()
                 var result = result.result
                 alpha.sendMessage(from, {
                     video: {
-                        url: result.audio
+                        url: result.nowm
                     },
                     mimetype: "video/mp4",
                     caption: mess.done
