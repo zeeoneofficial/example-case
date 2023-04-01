@@ -36,6 +36,28 @@ const {
     checkBandwidth,
     runtime
 } = require('./lib/simple')
+const {
+    isSetClose,
+    addSetClose,
+    removeSetClose,
+    changeSetClose,
+    getTextSetClose,
+    isSetLeft,
+    addSetLeft,
+    removeSetLeft,
+    changeSetLeft,
+    getTextSetLeft,
+    isSetOpen,
+    addSetOpen,
+    removeSetOpen,
+    changeSetOpen,
+    getTextSetOpen,
+    isSetWelcome,
+    addSetWelcome,
+    removeSetWelcome,
+    changeSetWelcome,
+    getTextSetWelcome
+} = require("./lib/store")
 const similarity = require('similarity')
 const threshold = 0.72
 const nou = require('node-os-utils');
