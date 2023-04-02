@@ -524,6 +524,12 @@ ${isSurender ? '' : ``}`.trim()
                 alpha.sendContact(m.chat, global.owner, m)
             }
             break
+            case 'sc':
+            case 'script':
+            case 'scrip':{
+              reply("https://github.com/zeeoneofficial/example-case")
+            }
+              break
             case 'menu':
             case 'help': {
                 var mundur = await hitungmundur(4, 23)
