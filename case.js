@@ -111,7 +111,7 @@ module.exports = alpha = async (alpha, m, chatUpdate, store, antilink, antiwame,
         const time = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('HH:mm:ss z')
 
         const reply = (text) => {
-            alpha.sendFakeLink(m.chat, text, salam, pushname, m)
+            alpha.sendFakeLink(m.chat, text, salam, footer_text, pp_bot, myweb, pushname, m)
         }
         const getStyle = (style, style2) => {
             let listt = `*${style2} Yg Kamu Masukkan Salah*\n\n_Berikut List ${style2} Yg Benar, Total_ *${style}* _${style2}_\n\n`
@@ -515,6 +515,10 @@ ${isSurender ? '' : ``}`.trim()
                     reply(`_Ya, Dikit Lagi!_`)
                 else alpha.send2ButMes(m.chat, "❌ Jawaban salah", footer_text, '.teteb', 'Hint', '.yteteb', 'Nyerah', m)
             }
+        }
+        if(isCmd && !isCreator && grup_only){
+          reply("Bot hanya bisa digunakan dalam grup")
+          return
         }
 
 

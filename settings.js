@@ -20,8 +20,9 @@ global.pp_bot = fs.readFileSync("./image/foto.jpg")
 global.qris = fs.readFileSync("./image/qris.jpg")
 global.owner = ['62887435047326']
 global.sessionName = 'session'
-global.background = "https://telegra.ph/file/40342e0085d521cb8b907.jpg" //maks size 100kb agar welcome nya gk lemot
+global.background = "https://telegra.ph/file/40342e0085d521cb8b907.jpg" //maks size 50kb agar welcome nya gk lemot
 global.prefa = ['-_-']
+global.grup_only = false //bot hanya bisa di gunakan dalam grup jika true
 global.mess = {
     done: 'Done ✅',
     wait: '_⌛ Sedang di proses_',

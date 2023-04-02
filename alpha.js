@@ -701,7 +701,7 @@ async function Botstarted() {
 
         alpha.sendMessage(jid, buttonMessage, quoted)
     }
-    alpha.sendFakeLink = (jid, text, salam, pushname, quoted) => alpha.sendMessage(jid, {
+    alpha.sendFakeLink = (jid, text, salam, footer_text, pp_bot, myweb, pushname, quoted) => alpha.sendMessage(jid, {
         text: text,
         contextInfo: {
             "externalAdReply": {
