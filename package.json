@@ -6,8 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "start": "node index.js"
-  },
-  "author": "Zeeoneofc",
+  }
+  "author": "nusatyiz",
   "license": "MIT",
   "dependencies": {
     "@adiwajshing/baileys" : "npm:baileys-md@^5.0.5",
