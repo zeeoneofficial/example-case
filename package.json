@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node index.js"
-  },
-  "author": "Zeeoneofc",
+    "start": "npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs"
+  }
+  "author": "nusatyiz",
   "license": "MIT",
   "dependencies": {
     "@adiwajshing/baileys" : "npm:baileys-md@^5.0.5",
