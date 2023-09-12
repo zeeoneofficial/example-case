@@ -10,15 +10,15 @@ global.APIKeys = {
 	'https://api.zeeoneofc.my.id': 'Your Key',
 }
 
-global.namabot = "Bot Store"
-global.namaowner = "Zeeoneofc"
+global.namabot = "Winds Bots"
+global.namaowner = "Winds"
 global.packname = namabot
 global.author = namaowner
-global.myweb = "https://s.id/zeeoneofc"
+global.myweb = "https://s.id/winds"
 global.footer_text = "© " + namabot
-global.pp_bot = fs.readFileSync("./image/foto.jpg")
-global.qris = fs.readFileSync("./image/qris.jpg")
-global.owner = ['62887435047326']
+global.pp_bot = fs.readFileSync("-")
+global.qris = fs.readFileSync("-")
+global.owner = ['6285603428416']
 global.sessionName = 'session'
 global.background = "https://telegra.ph/file/40342e0085d521cb8b907.jpg" //maks size 50kb agar welcome nya gk lemot
 global.prefa = ['-_-']
