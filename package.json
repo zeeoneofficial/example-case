@@ -10,7 +10,7 @@
   "author": "Zeeoneofc",
   "license": "MIT",
   "dependencies": {
-    "@adiwajshing/baileys" : "npm:baileys-md@^5.0.5",
+    "@adiwajshing/baileys" : "npm:@whiskeysockets/baileys@^6.5.0",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@adiwajshing/keyed-db": "^0.2.4",
     "awesome-phonenumber": "^2.64.0",
