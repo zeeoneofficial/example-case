@@ -11,9 +11,17 @@ const {
     downloadContentFromMessage,
     makeInMemoryStore,
     jidDecode,
-    proto
+    proto,
+    makeCacheableSignalKeyStore, PHONENUMBER_MCC
 } = require("@adiwajshing/baileys")
+const NodeCache = require("node-cache")
+const readline = require("readline")
+const { parsePhoneNumber } = require("libphonenumber-js")
 const pino = require('pino')
+const pairingCode = true
+const useMobile = false
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+const question = (text) => new Promise((resolve) => rl.question(text, resolve))
 const {
     Boom
 } = require('@hapi/boom')
@@ -111,36 +119,28 @@ async function Botstarted() {
         state,
         saveCreds
     } = await useMultiFileAuthState(`./${sessionName}`)
-
+    const { version, isLatest } = await fetchLatestBaileysVersion();
+    const msgRetryCounterCache = new NodeCache()
     const alpha = WADefault({
-        logger: pino({
-            level: 'silent'
-        }),
-        printQRInTerminal: true,
-        browser: ['CASE APIKEY', 'Safari', '1.0.0'],
-        patchMessageBeforeSending: (message) => {
+        version,
+        logger: pino({ level: "fatal" }).child({ level: "fatal" }),
+        printQRInTerminal: !pairingCode,
+        mobile: useMobile, 
+        browser: ['Chrome (Linux)', '', ''],
+        auth: {
+         creds: state.creds,
+         keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
+      },
+	    generateHighQualityLinkPreview: true, // make high preview link
+      getMessage: async (key) => {
+         let jid = jidNormalizedUser(key.remoteJid)
+         let msg = await store.loadMessage(jid, key.id)
 
-            const requiresPatch = !!(
-                message.buttonsMessage ||
-                message.templateMessage ||
-                message.listMessage
-            );
-            if (requiresPatch) {
-                message = {
-                    viewOnceMessage: {
-                        message: {
-                            messageContextInfo: {
-                                deviceListMetadataVersion: 2,
-                                deviceListMetadata: {},
-                            },
-                            ...message,
-                        },
-                    },
-                };
-            }
-            return message;
-        },
-        auth: state
+         return msg?.message || ""
+      },
+      msgRetryCounterCache, // Resolve waiting messages
+      defaultQueryTimeoutMs: undefined,
+
     })
     require('./case')
     nocache('./case', module => console.log(` "${module}" Telah diupdate!`))
@@ -163,6 +163,37 @@ async function Botstarted() {
             console.log(err)
         }
     })
+    if (pairingCode && !alpha.authState.creds.registered) {
+      if (useMobile) throw new Error('Cannot use pairing code with mobile api')
+
+      let phoneNumber
+      if (!!pairingNumber) {
+         phoneNumber = pairingNumber.replace(/[^0-9]/g, '')
+
+         if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
+            console.log("Start with your country's WhatsApp code, Example : 62xxx")
+            process.exit(0)
+         }
+      } else {
+         phoneNumber = await question(`Please type your WhatsApp number : `)
+         phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
+
+         // Ask again when entering the wrong number
+         if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
+            console.log("Start with your country's WhatsApp code, Example : 62xxx")
+
+            phoneNumber = await question(`Please type your WhatsApp number : `)
+            phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
+            rl.close()
+         }
+      }
+
+      setTimeout(async () => {
+         let code = await alpha.requestPairingCode(phoneNumber)
+         code = code?.match(/.{1,4}/g)?.join("-") || code
+         console.log(`Your Pairing Code : `, code)
+      }, 3000)
+    }
     alpha.ev.on('group-participants.update', async (anu) => {
         const isWelcome = _welcome.includes(anu.id)
         const isLeft = _left.includes(anu.id)
