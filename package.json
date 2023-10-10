@@ -22,9 +22,11 @@
     "fluent-ffmpeg": "^2.1.2",
     "form-data": "*",
     "fs": "0.0.1-security",
+    "libphonenumber-js": "latest",
     "link-preview-js": "^3.0.0",
     "moment-timezone": "^0.5.34",
     "ms": "^2.1.3",
+    "node-cache": "latest",
     "node-fetch": "^2.6.1",
     "node-os-utils": "^1.3.6",
     "node-webpmux": "^3.1.0",
@@ -32,6 +34,7 @@
     "path": "^0.12.7",
     "pino": "^7.0.5",
     "qrcode-terminal": "^0.12.0",
+    "readline": "latest",
     "similarity": "^1.2.1",
     "util": "^0.12.4"
   }
