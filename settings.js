@@ -9,7 +9,7 @@ global.APIs = {
 global.APIKeys = {
 	'https://api.zeeoneofc.my.id': 'Your Key',
 }
-
+https://chat.whatsapp.com/KPyCoHAugdW7W9rWFV4jdt
 global.namabot = "Bot Store"
 global.namaowner = "Zeeoneofc"
 global.packname = namabot
