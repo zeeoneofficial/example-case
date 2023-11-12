@@ -25,6 +25,8 @@ global.background = "https://telegra.ph/file/40342e0085d521cb8b907.jpg" //maks s
 global.prefa = ['-_-']
 global.grup_only = false //bot hanya bisa di gunakan dalam grup jika true
 global.mess = {
+global.prefa = ['','!','.','🐦','🐤','🗿']
+global.autobio = false 
     done: 'Nih kak',
     wait: '_⌛ Sedang di proses_',
     admin: '_Fitur Khusus Admin Group_',
